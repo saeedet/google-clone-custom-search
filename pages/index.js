@@ -1,82 +1,58 @@
-import Head from 'next/head'
+import { SearchOutlined } from "@material-ui/icons";
+import Head from "next/head";
+import Image from "next/image";
+import Header from "../components/Header";
+import MicIcon from "@material-ui/icons/Mic";
+import Footer from "../components/Footer";
+import { useRef } from "react";
+import { useRouter } from "next/dist/client/router";
 
 export default function Home() {
+  const searchInput = useRef(null);
+  const router = useRouter();
+
+  const search = (e) => {
+    e.preventDefault();
+    const term = searchInput.current.value;
+    if (!term) return;
+    router.push(`/search?term=${term}`);
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col items-center justify-center h-screen">
       <Head>
-        <title>Create Next App</title>
+        <title>Google</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
+      <main className="flex-grow w-4/5">
+        <form className="flex flex-col items-center mt-44" onSubmit={search}>
+          <Image
+            src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+            width={273}
+            height={92}
+          />
+          <div className="flex w-full my-6 hover:shadow-md focus-within:shadow-md  max-w-md rounded-full border border-gray-200 px-5 py-3 sm:max-w-xl lg:max-w-2xl">
+            <SearchOutlined className="text-gray-400 " />
+            <input
+              type="text"
+              className="focus:outline-none flex-grow pl-3"
+              ref={searchInput}
+            />
+            <MicIcon className="text-blue-500" />
+          </div>
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
-        </p>
-
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+          <div className="flex flex-col w-1/2 space-y-2 justify-center sm:space-y-0 sm:flex-row sm:space-x-2">
+            <button className="button" onClick={search}>
+              Google Search
+            </button>
+            <button className="button" onClick={search}>
+              I'm Feeling Lucky
+            </button>
+          </div>
+        </form>
       </main>
-
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer>
+      <Footer />
     </div>
-  )
+  );
 }
