@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import SearchHeader from "../components/SearchHeader";
-import { API_KEY, CONTEXT_KEY } from "../keys";
+// import { API_KEY, CONTEXT_KEY } from "../keys";
 import { useRouter } from "next/dist/client/router";
 import SearchResults from "../components/SearchResults";
 import Response from "../Response";
