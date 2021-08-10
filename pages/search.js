@@ -7,6 +7,8 @@ import SearchResults from "../components/SearchResults";
 import Response from "../Response";
 import Footer from "../components/Footer";
 
+const { GOOAPI_KEY, CONTEXT_KEY } = process.env;
+
 function Search({ results }) {
   console.log(results);
   const router = useRouter();
