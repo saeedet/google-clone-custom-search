@@ -1,7 +1,6 @@
 import React from "react";
 import Head from "next/head";
 import SearchHeader from "../components/SearchHeader";
-// import { API_KEY, CONTEXT_KEY } from "../keys";
 import { useRouter } from "next/dist/client/router";
 import SearchResults from "../components/SearchResults";
 import Response from "../Response";
@@ -18,7 +17,7 @@ function Search({ results }) {
         <title>{router.query.term} - Google Search </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <SearchHeader />
+      <SearchHeader term={router.query.term} />
       <SearchResults results={results} />
       <Footer />
     </div>

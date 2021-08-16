@@ -9,7 +9,7 @@ import AppsIcon from "@material-ui/icons/Apps";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import HeaderOptions from "./HeaderOptions";
 
-function SearchHeader() {
+function SearchHeader({ term }) {
   const router = useRouter();
   const searchInput = useRef(null);
 
@@ -48,6 +48,7 @@ function SearchHeader() {
               type="text"
               ref={searchInput}
               className="flex-grow focus:outline-none"
+              placeholder={term ? term : ""}
             />
             <ClearIcon
               className="text-gray-500 cursor-pointer mr-3"
