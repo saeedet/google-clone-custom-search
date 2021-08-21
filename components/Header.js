@@ -18,7 +18,7 @@ function Header() {
           <AppsIcon className="cursor-pointer text-gray-500  " />
         </div>
         <div className="iconContainer">
-          <Avatar url="http://saeedet.com/images/profilepic.jpg" />
+          <Avatar url="http://saeedet.com/images/profilepic.JPG" />
         </div>
       </div>
     </header>
